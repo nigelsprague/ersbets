@@ -32,7 +32,6 @@ function drawTeam1() {
   team1.forEach(player => team1Container += player.emoji)
   team1Elem.innerText = team1Container
 }
-drawTeam1()
 
 function drawTeam2() {
   let team2Container = ''
@@ -40,7 +39,8 @@ function drawTeam2() {
   team2.forEach(player => team2Container += player.emoji)
   team2Elem.innerText = team2Container
 }
-drawTeam2()
+
+reRack()
 
 function betTeam1(bet) {
   let totalSkill1 = 0
@@ -107,8 +107,14 @@ function betAll(team) {
 function updateBank() {
   document.getElementById('bank').innerText = bank
   reRack()
-  if (bank == 0) {
+  if (bank <= 0) {
     alert('Financially Dunked on. You have lost the game')
+    let loser = document.getElementsByClassName('border-dark')
+    console.log(loser)
+    for (let i = 0; i < loser.length; i++) {
+      let elem = loser[i]
+      elem.innerText = 'loser'
+    }
   }
 }
 

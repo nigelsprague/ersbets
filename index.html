@@ -15,28 +15,29 @@
   <header>Extremely Real Sports Bets</header>
   <main class="container-fluid">
     <section class="row justify-content-center text-center">
-      <h6 class="col-12">bank</h6>
-      <div id="bank" class="col-12">$$$</div>
+      <div>Bank: $<span id="bank">100</span></div>
       <section class="row">
 
         <div class="col-6">
           <section class="row">
             <h4>Team 1</h4>
             <div id="team1" class="bg-white"></div>
-            <div class="col-3 btn border-dark">Bet 5</div>
-            <div class="col-3 btn border-dark">Bet 25</div>
-            <div class="col-3 btn border-dark">Bet 100</div>
-            <div class="col-3 btn border-dark">All in</div>
+            <div onclick="betTeam1(5)" class="col-3 btn border-dark">Bet 5</div>
+            <div onclick="betTeam1(25)" class="col-3 btn border-dark">Bet 25</div>
+            <div onclick="betTeam1(100)" class="col-3 btn border-dark">Bet 100</div>
+            <div onclick="betAll('team1')" class="col-3 btn border-dark">All in
+            </div>
           </section>
         </div>
         <div class="col-6">
           <section class="row">
             <h4>Team 2</h4>
             <div id="team2" class="col-12 bg-light">Team 2</div>
-            <div class="col-3 btn border-dark">Bet 5</div>
-            <div class="col-3 btn border-dark">Bet 25</div>
-            <div class="col-3 btn border-dark">Bet 100</div>
-            <div class="col-3 btn border-dark">All in</div>
+            <div onclick="betTeam2(5)" class="col-3 btn border-dark">Bet 5</div>
+            <div onclick="betTeam2(25)" class="col-3 btn border-dark">Bet 25</div>
+            <div onclick="betTeam2(100)" class="col-3 btn border-dark">Bet 100</div>
+            <div onclick="betAll('team2')" class="col-3 btn border-dark">All in
+            </div>
           </section>
       </section>
       </div>

@@ -28,18 +28,93 @@ const team2Elem = document.getElementById('team2')
 
 function drawTeam1() {
   let team1Container = ''
-  let roster1 = players.filter((player) => player.teamNumber == 1)
-  roster1.forEach((player) => team1Container += player.emoji)
+  let team1 = players.filter((player) => player.teamNumber == 1)
+  team1.forEach(player => team1Container += player.emoji)
   team1Elem.innerText = team1Container
 }
-
 drawTeam1()
 
 function drawTeam2() {
   let team2Container = ''
-  let roster2 = players.filter((player) => player.teamNumber == 2)
-  roster2.forEach((player) => team2Container += player.emoji)
+  let team2 = players.filter(player => player.teamNumber == 2)
+  team2.forEach(player => team2Container += player.emoji)
   team2Elem.innerText = team2Container
 }
-
 drawTeam2()
+
+function betTeam1(bet) {
+  let totalSkill1 = 0
+  let totalSkill2 = 0
+  let team1 = players.filter(player => player.teamNumber == 1)
+  let team2 = players.filter(player => player.teamNumber == 2)
+  team1.forEach(player => totalSkill1 += player.skill)
+  team2.forEach(player => totalSkill2 += player.skill)
+  if (totalSkill1 > totalSkill2) {
+    bank += bet
+    console.log(bank, 'win')
+    alert('won 💰💸💵')
+  } else {
+    bank -= bet
+    console.log(bank, 'lost')
+    alert('lost 💰💸💵')
+  }
+  updateBank()
+}
+
+function betTeam2(bet) {
+  let totalSkill1 = 0
+  let totalSkill2 = 0
+  let team1 = players.filter(player => player.teamNumber == 1)
+  let team2 = players.filter(player => player.teamNumber == 2)
+  team1.forEach(player => totalSkill1 += player.skill)
+  team2.forEach(player => totalSkill2 += player.skill)
+  console.log(totalSkill1, totalSkill2)
+  if (totalSkill2 > totalSkill1) {
+    bank += bet
+    console.log(bank, 'win')
+    alert('won 💰💸💵')
+  } else {
+    bank -= bet
+    console.log(bank, 'lost')
+    alert('lost 💰💸💵')
+  }
+  updateBank()
+}
+
+function betAll(team) {
+  let totalSkill1 = 0
+  let totalSkill2 = 0
+  let team1 = players.filter(player => player.teamNumber == 1)
+  let team2 = players.filter(player => player.teamNumber == 2)
+  team1.forEach(player => totalSkill1 += player.skill)
+  team2.forEach(player => totalSkill2 += player.skill)
+  if (team == 'team1' && totalSkill1 > totalSkill1) {
+    bank += bank
+    console.log(bank, 'win')
+    alert('won 💰💸💵')
+  } else if (team == 'team2' && totalSkill2 > totalSkill1) {
+    bank += bank
+    console.log(bank, 'win')
+    alert('won 💰💸💵')
+  } else {
+    bank = 0
+    console.log(bank, 'lost')
+    alert('lost 💰💸💵')
+  }
+  updateBank()
+}
+
+function updateBank() {
+  document.getElementById('bank').innerText = bank
+  reRack()
+  if (bank == 0) {
+    alert('Financially Dunked on. You have lost the game')
+  }
+}
+
+function reRack() {
+  players.forEach(player => player.teamNumber = Math.round(Math.random()) + 1)
+  drawTeam1()
+  drawTeam2()
+}
+

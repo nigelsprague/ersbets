@@ -23,18 +23,23 @@ const players = [
   { teamNumber: 2, emoji: '🐅', skill: 100, name: "Tiger" },
 ]
 
-const team1Container = document.getElementById('team1')
-const team2Container = document.getElementById('team2')
+const team1Elem = document.getElementById('team1')
+const team2Elem = document.getElementById('team2')
 
 function drawTeam1() {
-  let team1 = team1Container
-  team1.innerHTML = ''
+  let team1Container = ''
   let roster1 = players.filter((player) => player.teamNumber == 1)
-  console.log(roster1)
-  roster1.forEach((player) => team1 += player.emoji)
-  console.log(team1)
+  roster1.forEach((player) => team1Container += player.emoji)
+  team1Elem.innerText = team1Container
 }
 
+drawTeam1()
+
 function drawTeam2() {
-  team2Container.innerHTML = ''
+  let team2Container = ''
+  let roster2 = players.filter((player) => player.teamNumber == 2)
+  roster2.forEach((player) => team2Container += player.emoji)
+  team2Elem.innerText = team2Container
 }
+
+drawTeam2()
